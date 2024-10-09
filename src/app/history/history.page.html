@@ -1,0 +1,25 @@
+
+<ion-button fill="clear" [routerLink]="['/view']">
+  <ion-icon name="arrow-back" size="large" style="color: #302f2f;" style="margin-right: 320px;"></ion-icon>
+</ion-button>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Completed Tasks History</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngIf="completedTasks.length > 0">
+        <ion-item *ngFor="let task of completedTasks">
+          <ion-label>
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.scheduledDate | date: 'MMM d, y, h:mm a' }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div *ngIf="completedTasks.length === 0" class="no-tasks-message">
+        No completed tasks found.
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

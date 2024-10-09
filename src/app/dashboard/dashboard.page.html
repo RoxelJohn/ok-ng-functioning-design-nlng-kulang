@@ -1,0 +1,94 @@
+<ion-header style="background-color: transparent; --ion-background-color: transparent; border: none; box-shadow: none; padding: 0; margin: 0;">
+    <ion-buttons slot="end">
+      <ion-menu-toggle>
+        <ion-icon class="setting" name="settings" size="large" style="margin-top: 10px;" ></ion-icon>
+      </ion-menu-toggle>
+    </ion-buttons>
+</ion-header>
+
+<div class="signin-header">
+<h2 style= margin-left:130px;>Welcome to <br> <span style=" margin-right:60px; margin-left: 20px;" style="font-weight: bold ;"> TO-DUO </span></h2>
+<img alt="Silhouette of mountains" src="../assets/image/Done.png" style="width: 100%; height: auto; " />
+</div>
+
+<ion-content class="dashboard-screen" id="main-content" fullscreen="true">
+  <!-- Task Section -->
+  <ion-card class="tasks-container">
+    <ion-card-header *ngIf="tasks.length > 0">
+      <ion-card-title>Scheduled</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-list *ngIf="tasks.length > 0" class="task-list">
+        <ion-item *ngFor="let task of tasks; let i = index">
+          <ion-label>
+            <h2 [ngClass]="{'completed': task.done}">{{ task.title }}</h2>
+            <p>{{ task.scheduledDate | date: 'MMM d, y, h:mm a' }}</p>
+          </ion-label>
+          <ion-button fill="outline" color="primary" slot="end" (click)="updateTaskPrompt(i)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="outline" color="danger" slot="end" (click)="deleteTask(i)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>           
+      </ion-list>
+
+      <div *ngIf="tasks.length === 0" class="no-tasks-message">No scheduled tasks</div>
+    </ion-card-content>
+  </ion-card>
+      
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreTasks($event)" *ngIf="tasks.length > 0">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more tasks..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+  <!-- Floating button to add tasks -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="light" (click)="presentAlert()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<!-- Settings Menu -->
+<ion-menu side="end" contentId="main-content">
+  <ion-content>
+    <!-- Profile Section within Settings -->
+    <div class="profile-header" style="display: flex; align-items: center; padding: 20px;">
+      <input type="file" (change)="onImageSelected($event)" style="display: none;" id="fileInput" accept="image/*" />
+
+<!-- Avatar and button to upload image -->
+<ion-avatar style="margin-right: 15px;" (click)="uploadImage()">
+    <ion-button fill="clear" class="profile-button">
+        <img alt="Profile Image" [src]="avatarUrl || 'https://ionicframework.com/docs/img/demos/avatar.svg'" class="profile-avatar" />
+    </ion-button>
+</ion-avatar>
+
+      <!-- Fullname and email next to avatar -->
+      <div class="profile-info">
+        <h3 style="font-style: oblique; justify-self: center;">{{ fullname }}</h3>
+        <p style="margin-left: 20;">{{ email }}</p>
+      </div>
+    </div>
+
+    <!-- Close Menu Button -->
+    <ion-button fill="clear" color="dark" style="position: absolute; top: 10px; right: 10px;" (click)="closeMenu()">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-content>
+</ion-menu>
+
+  
+<ion-tab-bar slot="bottom">
+  <ion-tab-button [routerLink]="['/dashboard-history']" >
+  <ion-icon name="list"></ion-icon>
+   history
+  </ion-tab-button>
+
+  <!-- Log Out Button -->
+<ion-tab-button (click)="confirmLogout()">
+<ion-icon name="log-out"></ion-icon>
+Log Out
+</ion-tab-button>
+
+

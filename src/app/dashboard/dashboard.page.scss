@@ -1,0 +1,108 @@
+.dashboard-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Change to flex-start to allow the content to fill the available space */
+  align-items: center; /* Centers the content horizontally */
+  height: 100vh; /* Full screen height */
+  padding: 20px; /* Padding around the content */
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
+
+  ion-avatar {
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    font-size: 22px;
+    margin: 5px 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  ion-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+.task-list {
+  max-height: 250px; // Set a maximum height for the list
+  overflow-y: auto;  // Enable vertical scrolling
+  --ion-background-color: transparent; // Optional: make background transparent
+}
+
+
+ion-card-content {
+  width: 100%;
+}
+
+.completed {
+  color: green; /* Change this to green for consistency */
+  
+}
+
+
+.ion-header {
+  color: #F4C27F;
+}
+
+ion-button {
+  --padding-start: 12px; /* Customize spacing between icon and text */
+  --padding-end: 12px;
+}
+
+ion-icon {
+  font-size: 20px; /* Adjust the icon size */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Ensure no padding around the icon */
+}
+
+ion-button:hover ion-icon,
+ion-button:active ion-icon {
+  transform: none; /* Prevent icon from moving when button is clicked */
+}
+
+.setting{
+  margin-left: 350px;
+}
+
+.profile-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: transparent;
+  border-radius: 50%;
+}
+
+.profile-avatar {
+  width: 60px; /* Set your preferred size */
+  height: 60px; /* Set your preferred size */
+  border-radius: 50%;
+  margin-right: auto;
+  object-fit: cover;
+
+}
+
+
+
+.clicked {
+  transform: scale(1.1); // Scale up the avatar
+}
+
+
+.logOut{
+border-radius: 25;
+margin-left: 30;
+margin-right: 30s;
+}
+
+

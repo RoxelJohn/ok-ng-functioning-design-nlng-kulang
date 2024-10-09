@@ -1,0 +1,10 @@
+.completed {
+    color: green; /* Change text color to green for completed tasks */
+    
+}
+
+.task-list {
+    max-height: 250px; /* Set a maximum height for the list */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    --ion-background-color: transparent; /* Optional: make background transparent */
+}

@@ -1,0 +1,42 @@
+<img alt="Silhouette of mountains" src="../assets/image/Done.png" style="width: 100%; height: auto;" />
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list *ngIf="tasks.length > 0" class="task-list">
+        <ion-item *ngFor="let task of tasks; let i = index">
+          <ion-checkbox
+            slot="start"
+            [(ngModel)]="task.selected"
+            [disabled]="task.done">
+          </ion-checkbox>
+          <ion-label>
+            <h2 [ngClass]="{'completed': task.done}">{{ task.title }}</h2>
+            <p>{{ task.scheduledDate | date: 'MMM d, y, h:mm a' }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreTasks($event)" *ngIf="tasks.length > 0">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more tasks..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+      <div *ngIf="tasks.length === 0" class="no-tasks-message">No scheduled tasks for today.</div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" color="success" (click)="markTasksAsDone()" style="margin: 20px;">
+    Mark as Done
+  </ion-button>
+</ion-content>
+  
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button [routerLink]="['/history']" >
+        <ion-icon name="list"></ion-icon>
+         history
+        </ion-tab-button>
+      
+        <!-- Log Out Button -->
+<ion-tab-button (click)="confirmLogout()">
+  <ion-icon name="log-out"></ion-icon>
+  Log Out
+</ion-tab-button>

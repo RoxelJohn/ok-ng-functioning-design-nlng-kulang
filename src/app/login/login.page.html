@@ -1,0 +1,32 @@
+<ion-content class="signin-screen">
+  
+  <ion-button fill="clear" [routerLink]="['/screen']">
+    <ion-icon name="arrow-back" size="large" style="color: #302f2f;"></ion-icon>
+  </ion-button>
+  
+  <div class="signin-header">
+    <img alt="Silhouette of mountains" src="../assets/image/Done.png" style="width: 100%; height: auto;" />
+    <h2>Welcome back to <br><span class="app-name"> TO-DUO</span></h2>
+  </div>
+
+  <ion-item lines="none" class="rounded-input">
+    <ion-input placeholder="Enter your fullname" type="text" [(ngModel)]="fullname"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none" class="rounded-input">
+    <ion-input placeholder="Enter your email" type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <div class="password-container">
+    <ion-item lines="none" class="rounded-input">
+      <ion-input placeholder="Enter your password" [type]="passwordType" [(ngModel)]="password"></ion-input>
+      <ion-icon class="password-toggle-icon" [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+    </ion-item>
+  </div>
+
+  <ion-button expand="block" class="signin-button" (click)="validateInputs()">Sign In</ion-button>
+
+  <div class="signup-link">
+    <p>Don’t have an account? <a href="#" [routerLink]="['/registration']">Sign Up</a></p>
+  </div>
+</ion-content>

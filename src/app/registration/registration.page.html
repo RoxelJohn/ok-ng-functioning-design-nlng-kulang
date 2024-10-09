@@ -1,0 +1,37 @@
+<ion-content class="registration-screen">
+    <div class="registration-header">
+      <img alt="Silhouette of mountains" src="../assets/image/Done.png" style="width: 100%; height: auto;" />
+      <h2>Get things done with <br> TO-DUO</h2>
+      <p class="description">
+       Let your guardian help you meet up your tasks
+      </p>
+    </div>
+
+    <ion-item lines="none" class="rounded-input">
+      <ion-input [(ngModel)]="fullname" placeholder="Enter your full name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="rounded-input">
+      <ion-input [(ngModel)]="email" placeholder="Enter your email" type="email"></ion-input>
+    </ion-item>
+
+    <div class="password-container">
+      <ion-item lines="none">
+        <ion-input placeholder="Enter password" [type]="passwordType" [(ngModel)]="password"></ion-input>
+        <ion-icon class="password-toggle-icon" [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+      </ion-item>
+    </div>
+
+    <div class="password-container">
+      <ion-item lines="none">
+        <ion-input placeholder="Confirm password" [type]="confirmPasswordType" [(ngModel)]="confirmPassword"></ion-input>
+        <ion-icon class="password-toggle-icon" [name]="confirmPasswordIcon" slot="end" (click)="toggleConfirmPasswordVisibility()"></ion-icon>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" class="register-button" (click)="register()">Register</ion-button>
+
+    <div class="login-link">
+      <p>Already have an account? <a href="#" [routerLink]="['/login']">Sign In</a></p>
+    </div>
+</ion-content>
